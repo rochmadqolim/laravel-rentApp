@@ -14,15 +14,14 @@
               <img src="{{ asset('dist/img/person.png') }}" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info pl-2">
-              <a href="#" class="d-block">Alexander Pierce</a>
+              <a href="#" class="d-block">TRIAL</a>
             </div>
           </div>
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
+          <!-- Tautan Dashboard -->
           <li class="nav-item menu-open">
             <a href="dashboard" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -31,31 +30,56 @@
               </p>
             </a>
           </li>
+          @if (auth()->user()->role == 'admin')
           <li class="nav-item">
-            <a href="rent" class="nav-link active">
+            <a href="rentForm" class="nav-link active">
               <i class="nav-icon fas fa-edit"></i>
               <p>
-                Forms
+                Form Rent
               </p>
             </a>
           </li>
+        
           <li class="nav-item">
-            <a href="logs" class="nav-link active">
-              <i class="nav-icon fas fa-calendar-alt"></i>
+            <a href="returnForm" class="nav-link active">
+              <i class="nav-icon fas fa-edit"></i>
               <p>
-                Rentlogs
+                Form Return
               </p>
             </a>
           </li>
+        @endif
           <li class="nav-item">
-            <a href="approval" class="nav-link active">
+            <a href="rentLog" class="nav-link active">
               <i class="nav-icon fas fa-book"></i>
               <p>
-                Approval
+                Rent log
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="returnLog" class="nav-link active">
+              <i class="nav-icon fas fa-book"></i>
+
+              <p>
+                Return log
+              </p>
+            </a>
+          </li>
+        
+          <!-- Tautan Approval hanya ditampilkan jika bukan admin -->
+          @if (auth()->user()->role != 'admin')
+            <li class="nav-item">
+              <a href="approval" class="nav-link active">
+                <i class="nav-icon fas fa-book"></i>
+                <p>
+                  Approval
+                </p>
+              </a>
+            </li>
+          @endif
         </ul>
+        
       </nav>
       <!-- /.sidebar-menu -->
     </div>

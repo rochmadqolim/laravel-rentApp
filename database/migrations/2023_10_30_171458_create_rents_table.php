@@ -14,14 +14,15 @@ return new class extends Migration
         Schema::create('rents', function (Blueprint $table) {
             $table->id();
             $table->date('rent_date');
+            $table->date('return_date')->nullable();
             $table->string('name');
             $table->unsignedBigInteger('unit_id');
             $table->foreign('unit_id')->references('id')->on('units');
             $table->unsignedBigInteger('driver_id');
             $table->foreign('driver_id')->references('id')->on('drivers');
-            $table->string('approval_1');
-            $table->string('approval_2');
-            $table->string('status')->default('Waiting Approval');
+            $table->string('approval_1')->nullable();
+            $table->string('approval_2')->nullable();
+            $table->string('status')->default('Waiting for first approval');
             $table->timestamps();
         });
     }

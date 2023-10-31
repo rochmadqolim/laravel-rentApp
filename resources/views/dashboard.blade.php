@@ -19,36 +19,34 @@
     <div class="container-fluid">
       <!-- Info boxes -->
       <div class="row">
+                <!-- /.col -->
+                <div class="col-12 col-sm-6 col-md-4">
+                  <div class="info-box mb-3">
+                    <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span>
+        
+                    <div class="info-box-content">
+                      <span class="info-box-text">Transaction</span>
+                      <span class="info-box-number">{{ $rents }}</span>
+                    </div>
+                    <!-- /.info-box-content -->
+                  </div>
+                  <!-- /.info-box -->
+                </div>
+                <!-- /.col -->
         <div class="col-12 col-sm-6 col-md-4">
           <div class="info-box">
             <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text">CPU Traffic</span>
+              <span class="info-box-text">Unit</span>
               <span class="info-box-number">
-                10
-                <small>%</small>
+                {{ $units }}
               </span>
             </div>
             <!-- /.info-box-content -->
           </div>
           <!-- /.info-box -->
         </div>
-        <!-- /.col -->
-        <div class="col-12 col-sm-6 col-md-4">
-          <div class="info-box mb-3">
-            <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span>
-
-            <div class="info-box-content">
-              <span class="info-box-text">Likes</span>
-              <span class="info-box-number">41,410</span>
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-        </div>
-        <!-- /.col -->
-
         <!-- fix for small devices only -->
         <div class="clearfix hidden-md-up"></div>
 
@@ -57,8 +55,8 @@
             <span class="info-box-icon bg-success elevation-1"><i class="fas fa-users"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text">Sales</span>
-              <span class="info-box-number">760</span>
+              <span class="info-box-text">Driver</span>
+              <span class="info-box-number">{{ $rents }}</span>
             </div>
             <!-- /.info-box-content -->
           </div>

@@ -1,6 +1,10 @@
 <?php
 
+use App\Http\Controllers\ApprovalController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\RentController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,8 +22,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('dashboard',[HomeController::class, 'dashboard']);
-Route::get('logs',[HomeController::class, 'logs']);
-Route::get('rent',[HomeController::class, 'rent']);
-Route::get('approval',[HomeController::class, 'approval']);
 Route::get('login',[HomeController::class, 'login']);
+Route::get('dashboard',[HomeController::class, 'dashboard']);
+Route::get('rentForm',[HomeController::class, 'rentForm']);
+Route::get('returnForm',[HomeController::class, 'returnForm']);
+Route::get('rentLog',[HomeController::class, 'rentLog']);
+Route::get('returnLog',[HomeController::class, 'returnLog']);
+Route::get('approval',[HomeController::class, 'approval']);
+
+Route::post('rentForm',[RentController::class, 'storeRent']);
+Route::post('returnForm',[RentController::class, 'storeReturn']);
+
+Route::post('login',[AuthController::class, 'auth']);
+Route::get('logout',[AuthController::class, 'logout']);
+
+Route::post('approval', [ApprovalController::class, 'approved']);
