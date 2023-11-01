@@ -7,7 +7,7 @@
       <div class="container-fluid">
           <div class="row mb-2">
               <div class="col-sm-6">
-                  <h1>Return Confirmation</h1>
+                  <h1 class="m-0">{{ $name }}</h1>
               </div>
 
           </div>
@@ -24,7 +24,7 @@
                   <div class="card">
                       <div class="card-header">
                           <h3 class="card-title">
-                              Responsive Hover Table
+                              Return Confirmation
                           </h3>
 
                           <div class="card-tools">

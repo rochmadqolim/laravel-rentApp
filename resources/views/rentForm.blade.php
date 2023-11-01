@@ -7,7 +7,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Advanced Form</h1>
+          <h1 class="m-0">{{ $name }}</h1>
         </div>
       </div>
     </div><!-- /.container-fluid -->
@@ -22,7 +22,7 @@
       <!-- SELECT2 EXAMPLE -->
       <div class="card card-default">
         <div class="card-header">
-          <h3 class="card-title">Select2 (Default Theme)</h3>
+          <h3 class="card-title">Create Transaction</h3>
         </div>
         <div class="card-body">
           <form action="" method="post">

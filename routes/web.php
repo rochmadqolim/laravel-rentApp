@@ -29,6 +29,7 @@ Route::get('returnForm',[HomeController::class, 'returnForm']);
 Route::get('rentLog',[HomeController::class, 'rentLog']);
 Route::get('returnLog',[HomeController::class, 'returnLog']);
 Route::get('approval',[HomeController::class, 'approval']);
+Route::get('export',[HomeController::class, 'export']);
 
 Route::post('rentForm',[RentController::class, 'storeRent']);
 Route::post('returnForm',[RentController::class, 'storeReturn']);
