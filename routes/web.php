@@ -22,19 +22,24 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('login',[HomeController::class, 'login']);
-Route::get('dashboard',[HomeController::class, 'dashboard']);
-Route::get('rentForm',[HomeController::class, 'rentForm']);
-Route::get('returnForm',[HomeController::class, 'returnForm']);
-Route::get('rentLog',[HomeController::class, 'rentLog']);
-Route::get('returnLog',[HomeController::class, 'returnLog']);
-Route::get('approval',[HomeController::class, 'approval']);
-Route::get('export',[HomeController::class, 'export']);
 
-Route::post('rentForm',[RentController::class, 'storeRent']);
-Route::post('returnForm',[RentController::class, 'storeReturn']);
+Route::middleware(['guest'])->group(function () {
+    Route::get('login', [HomeController::class, 'login'])->name('login');
+    Route::post('login', [AuthController::class, 'auth']);
+});
 
-Route::post('login',[AuthController::class, 'auth']);
-Route::get('logout',[AuthController::class, 'logout']);
+Route::middleware(['auth'])->group(function () {
+    Route::get('dashboard', [HomeController::class, 'dashboard']);
+    Route::get('rentForm', [HomeController::class, 'rentForm']);
+    Route::get('returnForm', [HomeController::class, 'returnForm']);
+    Route::get('rentLog', [HomeController::class, 'rentLog']);
+    Route::get('returnLog', [HomeController::class, 'returnLog']);
+    Route::get('approval', [HomeController::class, 'approval']);
+    Route::get('export', [HomeController::class, 'export']);
 
-Route::post('approval', [ApprovalController::class, 'approved']);
+    Route::post('rentForm', [RentController::class, 'storeRent']);
+    Route::post('returnForm', [RentController::class, 'storeReturn']);
+    
+    Route::get('logout', [AuthController::class, 'logout']);
+    Route::post('approval', [ApprovalController::class, 'approved']);
+});
