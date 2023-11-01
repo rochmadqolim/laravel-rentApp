@@ -6,6 +6,7 @@ use App\Exports\RentExport;
 use App\Models\Driver;
 use App\Models\Rent;
 use App\Models\Unit;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
@@ -107,6 +108,6 @@ class HomeController extends Controller
     }
 
     public function export(){
-        return Excel::download(new RentExport, 'bismillah.xlsx');
+        return Excel::download(new RentExport, 'rent-list-'.Carbon::now()->toDateTimeLocalString().'.xlsx');
     }
 }
