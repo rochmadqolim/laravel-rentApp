@@ -27,11 +27,11 @@ class RentController extends Controller
             $driver->save();
     
             DB::commit();
-            return redirect('rentLog');
+            return redirect('form');
         } catch (\Throwable $th) {
             DB::rollBack();
     
-            return redirect('rentForm');
+            return redirect('form');
         }
     }
     
@@ -64,13 +64,13 @@ class RentController extends Controller
     
             DB::commit();
     
-            return redirect('returnLog');
+            return redirect('form');
         } catch (ModelNotFoundException $ex) {
             DB::rollBack();
-            return redirect('returnForm');
+            return redirect('form');
         } catch (\Exception $ex) {
             DB::rollBack();
-            return redirect('returnForm');
+            return redirect('form');
         }
     }
     

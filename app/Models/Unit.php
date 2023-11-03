@@ -12,4 +12,9 @@ class Unit extends Model
     protected $fillable =[
         'name', 'brand'
     ];
+
+    public function brand()
+    {
+        return $this->belongsTo(Brand::class, 'brand_id');
+    }
 }

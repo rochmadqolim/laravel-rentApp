@@ -17,26 +17,28 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        Schema::disableForeignKeyConstraints();
         User::truncate();
+        Schema::enableForeignKeyConstraints();
     
         $userData = [
             [
                 'name' => 'this admin',
                 'email' => 'admin@mail.com',
                 'password' => Hash::make('123'),
-                'role' => 'admin',
+                'role_id' => 1,
             ],
             [
                 'name' => 'this approver 1',
                 'email' => 'approver1@mail.com',
                 'password' => Hash::make('123'),
-                'role' => 'approver1',
+                'role_id' => 2,
             ],
             [
                 'name' => 'this approver 2',
                 'email' => 'approver2@mail.com',
                 'password' => Hash::make('123'),
-                'role' => 'approver2',
+                'role_id' => 3,
             ],
         ];
     

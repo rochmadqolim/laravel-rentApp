@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Exports\RentExport;
+use App\Models\Brand;
 use App\Models\Driver;
 use App\Models\Rent;
 use App\Models\Unit;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -44,11 +46,17 @@ class HomeController extends Controller
         ]);
     }
 
-    
-    public function rentForm()
+    public function form(Request $request)
     {
-        $title = "Rent Form";
+        $title = "Form";
         $name = Auth::user()->name;
+
+        $rents = new Rent();
+        if ($request->get('search')) {
+            $rents = $rents->where('name', 'LIKE', '%' . $request->get('search') . '%');
+        }
+    
+        $rents = $rents->get();
 
         $units = Unit::orderBy('status', 'asc')
              ->orderBy('name', 'asc')
@@ -59,8 +67,9 @@ class HomeController extends Controller
              ->get();
 
         
-        return view('rentForm',['title'=> $title, 'units'=> $units, 'drivers'=> $drivers, 'name' => $name]);
+        return view('form',['title'=> $title, 'units'=> $units, 'drivers'=> $drivers, 'name' => $name, 'rents'=> $rents]);
     }
+    
     public function returnForm()
     {
         $title = "Return Form";
@@ -71,41 +80,81 @@ class HomeController extends Controller
         return view('returnForm',['title'=> $title, 'rents'=> $rents, 'name' => $name]);
     }
 
-    public function rentLog()
+    public function user(Request $request)
     {
-        $title = "Rent Log";
-        $name = Auth::user()->name;
+        $title = "User Setting";
+        $user = Auth::user();
 
     
+        $users = new User();
+        if ($request->get('search')) {
+            $users = $users->where('name', 'LIKE', '%' . $request->get('search') . '%');
+        }
+    
+        $users = $users->get();
+    
+        return view('user', ['title' => $title, 'users' => $users , 'user' => $user]);
+    }
+    
+    public function driver(Request $request)
+    {
+        $title = "Driver";
+        $name = Auth::user()->name;
+    
+        $drivers = new Driver;
+        if ($request->get('search')) {
+            $drivers = $drivers->where('name', 'LIKE', '%' . $request->get('search') . '%');
+        }
+    
+        $drivers = $drivers->get();
+    
+        return view('driver', ['name' => $name, 'title' => $title, 'drivers' => $drivers]);
+    }
+    
+
+    public function unit(Request $request)
+    {
+        $title = "Unit";
+        $name = Auth::user()->name;
+        $brands = Brand::all();
+
+        $units = new Unit();
+        if ($request->get('search')) {
+            $units = $units->where('name', 'LIKE', '%' . $request->get('search') . '%');
+        }
+    
+        $units = $units->get();
+    
+        return view('unit', ['name' => $name, 'title' => $title, 'units' => $units, 'brands' => $brands]);
+    }
+
+    public function log()
+    {
+        $title = "Log";
+        $name = Auth::user()->name;
+
         $rents = Rent::orderBy('updated_at', 'desc')->get();
 
     
-        return view('rentLog', ['title' => $title, 'rents' => $rents , 'name' => $name]);
-    }
-
-    public function returnLog()
-    {
-        $title = "Renturn Log";
-        $name = Auth::user()->name;
-
-        $rents = Rent::orderBy('updated_at', 'desc')->get();
-
-    
-        return view('returnLog', ['title' => $title, 'rents' => $rents, 'name' => $name]);
+        return view('log', ['title' => $title, 'rents' => $rents, 'name' => $name]);
     }
     
-    public function approval()
+    public function approval(Request $request)
     {
         $title = "Approval";
         $role = Auth::user();
-        
-        $rents = Rent::with(['driver', 'unit'])
-        ->orderBy('updated_at', 'desc')
-        ->get();
+
+        $rents = new Rent();
+        if ($request->get('search')) {
+            $rents = $rents->where('name', 'LIKE', '%' . $request->get('search') . '%');
+        }
+    
+        $rents = $rents->get();
         
         return view('approval', ['title' => $title, 'rents' => $rents, 'role' => $role]);
         
     }
+    
 
     public function export(){
         return Excel::download(new RentExport, 'rent-list-'.Carbon::now()->toDateTimeLocalString().'.xlsx');

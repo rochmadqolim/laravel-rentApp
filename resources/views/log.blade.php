@@ -28,8 +28,8 @@
                   </a>
                   <button type="button" class="btn btn-tool btn-sm" data-card-widget="collapse" title="Collapse">
                     <i class="fas fa-minus"></i>
-                    
                   </button>
+                  
                 </div>
               </div>
               <div class="card-body table-responsive p-0">
@@ -49,7 +49,6 @@
                   </thead>
                   <tbody>
                     @foreach ($rents as $item)
-                    @if ($item->return_date != null)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $item->rent_date }}</td>  
@@ -61,7 +60,6 @@
                         <td>{{ $item->approval_2 }}</td>
                         <td>{{ $item->status }}</td>
                     </tr>
-                @endif
                     @endforeach
                   </tbody>
                 </table>

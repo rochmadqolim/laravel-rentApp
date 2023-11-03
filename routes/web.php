@@ -30,15 +30,17 @@ Route::middleware(['guest'])->group(function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::get('dashboard', [HomeController::class, 'dashboard']);
-    Route::get('rentForm', [HomeController::class, 'rentForm']);
+    Route::get('form', [HomeController::class, 'form']);
     Route::get('returnForm', [HomeController::class, 'returnForm']);
-    Route::get('rentLog', [HomeController::class, 'rentLog']);
-    Route::get('returnLog', [HomeController::class, 'returnLog']);
+    Route::get('user', [HomeController::class, 'user']);
+    Route::get('driver', [HomeController::class, 'driver']);
+    Route::get('unit', [HomeController::class, 'unit']);
+    Route::get('log', [HomeController::class, 'log']);
     Route::get('approval', [HomeController::class, 'approval']);
     Route::get('export', [HomeController::class, 'export']);
 
-    Route::post('rentForm', [RentController::class, 'storeRent']);
-    Route::post('returnForm', [RentController::class, 'storeReturn']);
+    Route::post('rent', [RentController::class, 'storeRent']);
+    Route::post('return', [RentController::class, 'storeReturn']);
     
     Route::get('logout', [AuthController::class, 'logout']);
     Route::post('approval', [ApprovalController::class, 'approved']);

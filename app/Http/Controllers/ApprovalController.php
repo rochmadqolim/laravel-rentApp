@@ -16,7 +16,7 @@ class ApprovalController extends Controller
         $user = Auth::user();
     
         $request->session()->regenerate();
-        if (Auth::user()->role == 'approver1'){
+        if (Auth::user()->role_id == 2){
             try {
                 DB::beginTransaction();
                 
@@ -39,7 +39,7 @@ class ApprovalController extends Controller
             }
         }
 
-        if (Auth::user()->role == 'approver2'){
+        if (Auth::user()->role_id == 3){
             try {
                 DB::beginTransaction();
                 
