@@ -26,14 +26,15 @@
                                 <div class="card-tools">
                                     <form action="approval" method="get">
                                         <div class="input-group input-group-sm" style="width: 150px;">
-                                            <input type="text" name="search" class="form-control float-right" placeholder="Search" value="{{ request('search') }}">
+                                            <input type="text" name="search" class="form-control float-right"
+                                                placeholder="Search" value="{{ request('search') }}">
                                             <div class="input-group-append">
                                                 <button type="submit" class="btn btn-default">
                                                     <i class="fas fa-search"></i>
                                                 </button>
                                             </div>
                                         </div>
-                                      </form>
+                                    </form>
                                 </div>
                             </div>
                             <!-- /.card-header -->
@@ -81,7 +82,8 @@
                                                     <td>{{ $loop->iteration }}</td>
                                                     <form action="approval" method="post">
                                                         @csrf
-                                                        <input type="hidden" name="approve_id" value="{{ $item->id }}">
+                                                        <input type="hidden" name="approve_id"
+                                                            value="{{ $item->id }}">
                                                         <td>{{ $item->rent_date }}</td>
                                                         <td>{{ $item->name }}</td>
                                                         <td>{{ $item->unit->name }}</td>

@@ -26,15 +26,17 @@
                         </div>
                         <form>
                             <div class="card-body" style="height: 250px;">
-                              <div class="form-group">
-                                <label for="driver_name">Driver Name</label>
-                                <input type="text" class="form-control col-10" id="driver_name" placeholder="Enter Driver Name">
-                            </div>
-                            <div class="form-group">
-                                <label for="driver_number">Number</label>
-                                <input type="text" class="form-control col-10" id="driver_number" placeholder="Enter Phone Number">
-                            </div>
-                            
+                                <div class="form-group">
+                                    <label for="driver_name">Driver Name</label>
+                                    <input type="text" class="form-control col-10" id="driver_name"
+                                        placeholder="Enter Driver Name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="driver_number">Number</label>
+                                    <input type="text" class="form-control col-10" id="driver_number"
+                                        placeholder="Enter Phone Number">
+                                </div>
+
                             </div>
                             <div class="card-footer d-flex justify-content-end">
                                 <button type="submit" class="btn btn-primary btn-lg">Submit</button>
@@ -48,17 +50,18 @@
                         <div class="card-header">
                             <h3 class="card-title">Driver List</h3>
                             <div class="card-tools">
-                              <form action="driver" method="get">
-                                <div class="input-group input-group-sm" style="width: 150px;">
-                                    <input type="text" name="search" class="form-control float-right" placeholder="Search" value="{{ request('search') }}">
-                                    <div class="input-group-append">
-                                        <button type="submit" class="btn btn-default">
-                                            <i class="fas fa-search"></i>
-                                        </button>
+                                <form action="driver" method="get">
+                                    <div class="input-group input-group-sm" style="width: 150px;">
+                                        <input type="text" name="search" class="form-control float-right"
+                                            placeholder="Search" value="{{ request('search') }}">
+                                        <div class="input-group-append">
+                                            <button type="submit" class="btn btn-default">
+                                                <i class="fas fa-search"></i>
+                                            </button>
+                                        </div>
                                     </div>
-                                </div>
-                              </form>
-                            
+                                </form>
+
                             </div>
                         </div>
                         <div class="card-body table-responsive p-0" style="height: 550px;">

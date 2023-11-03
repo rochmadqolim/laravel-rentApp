@@ -24,50 +24,52 @@
              <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                  data-accordion="false">
                  <!-- Tautan Dashboard -->
-                 <li class="nav-item menu-open">
-                     <a href="dashboard" class="nav-link active">
+                 <li class="nav-item">
+                     <a href="dashboard" class="nav-link {{ request()->is('dashboard') ? 'active' : '' }}">
                          <i class="nav-icon fas fa-tachometer-alt"></i>
                          <p>
                              Dashboard
                          </p>
                      </a>
                  </li>
+
+
                  @if (auth()->user()->role_id == 1)
                      <li class="nav-item">
-                         <a href="form" class="nav-link active">
+                         <a href="form" class="nav-link {{ request()->is('form') ? 'active' : '' }}">
                              <i class="nav-icon fas fa-edit"></i>
                              <p>
                                  Form
                              </p>
                          </a>
                      </li>
-                     
-                     <li class="nav-item">
-                         <a href="#" class="nav-link active">
+
+                     <li class="nav-item {{ request()->is('driver', 'unit') }}">
+                         <a href="#" class="nav-link {{ request()->is('driver', 'unit') ? 'active' : '' }}">
                              <i class="nav-icon fas fa-thumbtack"></i>
                              <p>
                                  Post
                                  <i class="right fas fa-angle-left"></i>
-                                </p>
-                     </a>
-                     <ul class="nav nav-treeview">
-                         <li class="nav-item">
-                             <a href="driver" class="nav-link">
-                                 <i class="fas nav-icon fa-id-card"></i>
-                                 <p>Driver</p>
-                             </a>
-                         </li>
-                         <li class="nav-item">
-                             <a href="unit" class="nav-link">
-                                 <i class="fas nav-icon fa-truck-monster"></i>
-                                 <p>Unit</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    @endif
+                             </p>
+                         </a>
+                         <ul class="nav nav-treeview">
+                             <li class="nav-item">
+                                 <a href="driver" class="nav-link {{ request()->is('driver') ? 'active' : '' }}">
+                                     <i class="fas nav-icon fa-id-card"></i>
+                                     <p>Driver</p>
+                                 </a>
+                             </li>
+                             <li class="nav-item">
+                                 <a href="unit" class="nav-link {{ request()->is('unit') ? 'active' : '' }}">
+                                     <i class="fas nav-icon fa-truck-monster"></i>
+                                     <p>Unit</p>
+                                 </a>
+                             </li>
+                         </ul>
+                     </li>
+                 @endif
                  <li class="nav-item">
-                     <a href="log" class="nav-link active">
+                     <a href="log" class="nav-link {{ request()->is('log') ? 'active' : '' }}">
                          <i class="nav-icon fas fa-book"></i>
                          <p>
                              Log
@@ -77,7 +79,7 @@
 
                  @if (auth()->user()->role_id == 1)
                      <li class="nav-item">
-                         <a href="user" class="nav-link active">
+                         <a href="user" class="nav-link {{ request()->is('user') ? 'active' : '' }}">
                              <i class="fas fa-user nav-icon"></i>
                              <p>
                                  User Setting
@@ -89,7 +91,7 @@
                  <!-- Tautan Approval hanya ditampilkan jika bukan admin -->
                  @if (auth()->user()->role_id != 1)
                      <li class="nav-item">
-                         <a href="approval" class="nav-link active">
+                         <a href="approval" class="nav-link {{ request()->is('approval') ? 'active' : '' }}">
                              <i class="nav-icon fas fa-book"></i>
                              <p>
                                  Approval
@@ -99,13 +101,13 @@
                  @endif
 
                  <li class="nav-item">
-                    <a href="returnForm" class="nav-link active">
-                        <i class="nav-icon fas fa-edit"></i>
-                        <p>
-                            Form Return
-                        </p>
-                    </a>
-                </li>
+                     <a href="returnForm" class="nav-link {{ request()->is('returnForm') ? 'active' : '' }}">
+                         <i class="nav-icon fas fa-edit"></i>
+                         <p>
+                             Form Return
+                         </p>
+                     </a>
+                 </li>
              </ul>
 
          </nav>

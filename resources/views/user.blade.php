@@ -20,7 +20,7 @@
                 </button>
             </div>
         </div>
-        
+
         {{-- Modal --}}
         <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel"
             aria-hidden="true">
@@ -88,7 +88,7 @@
                             </div>
 
                             <div class="card-body">
-                                <table id="example2" class="table table-bordered table-hover">
+                                <table id="example2" class="table table-hover">
                                     <thead>
                                         <tr>
                                             <th>ID</th>
@@ -106,11 +106,13 @@
                                                 <td>{{ $item->email }}</td>
                                                 <td>{{ $item->role->name }}</td>
                                                 <td>
-                                                    <a href="#" class="mr-2" role="button">Detail</a>
+                                                    <a href="log" class="btn btn-primary btn-lg text-start">Detail</a>
                                                     @if ($item->id !== Auth::user()->id)
-                                                        <a href="#" class="ml-2" role="button">Delete</a>
+                                                        <button class="btn btn-danger btn-lg text-end">Delete</button>
                                                     @endif
                                                 </td>
+
+
 
                                             </tr>
                                         @endforeach

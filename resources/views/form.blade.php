@@ -112,7 +112,8 @@
                                                     <td> {{ $item->unit->name }}</td>
                                                     <td> {{ $item->driver->name }}</td>
                                                     <td>
-                                                        <input type="submit" class="btn btn-primary btn-lg" value="Returned">
+                                                        <input type="submit" class="btn btn-primary btn-lg"
+                                                            value="Returned">
                                                     </td>
                                                 </form>
                                             </tr>
