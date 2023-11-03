@@ -104,7 +104,7 @@
                                                 <td>{{ $item->id }}</td>
                                                 <td>{{ $item->name }}</td>
                                                 <td>{{ $item->email }}</td>
-                                                <td>{{ $item->role }}</td>
+                                                <td>{{ $item->role->name }}</td>
                                                 <td>
                                                     <a href="#" class="mr-2" role="button">Detail</a>
                                                     @if ($item->id !== Auth::user()->id)

@@ -75,7 +75,7 @@
                      </a>
                  </li>
 
-                 @if (auth()->user()->role_1 == 1)
+                 @if (auth()->user()->role_id == 1)
                      <li class="nav-item">
                          <a href="user" class="nav-link active">
                              <i class="fas fa-user nav-icon"></i>
