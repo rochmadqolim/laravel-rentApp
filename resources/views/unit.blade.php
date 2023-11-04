@@ -24,17 +24,17 @@
                         <div class="card-header">
                             <h3 class="card-title">Add New Unit</h3>
                         </div>
-                        <form>
+                        <form action="unit" method="POST">
+                            @csrf
                             <div class="card-body pt-3" style="height: 250px;">
                                 <div class="form-group">
                                     <label for="name">Unit Name</label>
-                                    <input type="text" class="form-control col-10" id="name"
-                                        placeholder="Enter Name">
+                                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name" required>
                                 </div>
                                 <div class="form-group">
-                                    <label>Unit Brand</label>
-                                    <select name="brand_id" id="brand" class="form-control select2 col-10">
-                                        <option selected="selected">Select Brand</option>
+                                    <label for="brand">Unit Brand</label>
+                                    <select name="brand_id" id="brand" class="form-control select2" required>
+                                        <option value="" selected disabled>Select Brand</option>
                                         @foreach ($brands as $item)
                                             <option value="{{ $item->id }}">{{ $item->name }}</option>
                                         @endforeach
@@ -42,9 +42,10 @@
                                 </div>
                             </div>
                             <div class="card-footer d-flex justify-content-end">
-                                <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+                                <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
                         </form>
+                        
                     </div>
                 </div>
 
@@ -87,14 +88,16 @@
                                             <td style="color: {{ $item->status === 'Unit Available' ? 'green' : 'red' }}">
                                                 {{ $item->status }}
                                             </td>
-
                                             <td>
                                                 @if ($item->status == 'Unit Available')
-                                                    <button>uuuu</button>
-                                                    <button>dddd</button>
+                                                    <a href="#" class="btn btn-primary btn-md mr-2">Detail</a>
+                                                    <form action=" unit/{{ $item->id }}" method="POST" style="display: inline;">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger btn-md" id="delete">Delete</button>
+                                                    </form>
                                                 @endif
                                             </td>
-
                                         </tr>
                                     @endforeach
                                 </tbody>

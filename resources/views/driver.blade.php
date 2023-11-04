@@ -24,16 +24,17 @@
                         <div class="card-header">
                             <h3 class="card-title">Add New Driver</h3>
                         </div>
-                        <form>
+                        <form action="driver" method="POST">
+                            @csrf
                             <div class="card-body" style="height: 250px;">
                                 <div class="form-group">
                                     <label for="driver_name">Driver Name</label>
-                                    <input type="text" class="form-control col-10" id="driver_name"
+                                    <input type="text" class="form-control col-10" id="name" name="name"
                                         placeholder="Enter Driver Name">
                                 </div>
                                 <div class="form-group">
                                     <label for="driver_number">Number</label>
-                                    <input type="text" class="form-control col-10" id="driver_number"
+                                    <input type="text" class="form-control col-10" id="phone" name="phone"
                                         placeholder="Enter Phone Number">
                                 </div>
 
@@ -87,9 +88,13 @@
 
                                             <td>
                                                 @if ($item->status == 'Available')
-                                                    <button>uuuu</button>
-                                                    <button>dddd</button>
-                                                @endif
+                                                <a href="#" class="btn btn-primary btn-md mr-2">Detail</a>
+                                                <form action=" driver/{{ $item->id }}" method="POST" style="display: inline;">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger btn-md" id="delete">Delete</button>
+                                                </form>
+                                            @endif
                                             </td>
                                         </tr>
                                     @endforeach

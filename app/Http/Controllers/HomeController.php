@@ -6,6 +6,7 @@ use App\Exports\RentExport;
 use App\Models\Brand;
 use App\Models\Driver;
 use App\Models\Rent;
+use App\Models\Role;
 use App\Models\Unit;
 use App\Models\User;
 use Carbon\Carbon;
@@ -84,6 +85,7 @@ class HomeController extends Controller
     {
         $title = "User Setting";
         $user = Auth::user();
+        $roles = Role::all();
 
     
         $users = new User();
@@ -93,7 +95,7 @@ class HomeController extends Controller
     
         $users = $users->get();
     
-        return view('user', ['title' => $title, 'users' => $users , 'user' => $user]);
+        return view('user', ['title' => $title, 'users' => $users , 'user' => $user , 'roles' => $roles]);
     }
     
     public function driver(Request $request)
@@ -106,10 +108,11 @@ class HomeController extends Controller
             $drivers = $drivers->where('name', 'LIKE', '%' . $request->get('search') . '%');
         }
     
-        $drivers = $drivers->get();
+        $drivers = $drivers->orderBy('name', 'asc')->get();
     
         return view('driver', ['name' => $name, 'title' => $title, 'drivers' => $drivers]);
     }
+    
     
 
     public function unit(Request $request)
@@ -123,7 +126,7 @@ class HomeController extends Controller
             $units = $units->where('name', 'LIKE', '%' . $request->get('search') . '%');
         }
     
-        $units = $units->get();
+        $units = $units->orderBy('name', 'asc')->get();
     
         return view('unit', ['name' => $name, 'title' => $title, 'units' => $units, 'brands' => $brands]);
     }

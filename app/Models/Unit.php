@@ -10,7 +10,7 @@ class Unit extends Model
     use HasFactory;
 
     protected $fillable =[
-        'name', 'brand'
+        'name', 'brand_id'
     ];
 
     public function brand()
