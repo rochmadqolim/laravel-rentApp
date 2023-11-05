@@ -11,8 +11,8 @@ Aplikasi penyewaan kendaraan alat berat yang dibangun menggunakan framework lara
 -   Terdapat laporan periodik pemesanan kendaraan yang dapat di export (Excel)
 -   Terdapat fitur pencarian untuk memudahkan user memfilter data yang diinginkan
 -   Admin dapat menginputkan kendaraan dan menentukan driver untuk dipesan
--   Admin dapat mengkonfirmasi penyembalian kendaraan
--   Admin dapat melakukan mendaftarakan user, driver dan unit
+-   Admin dapat mengkonfirmasi pengembalian kendaraan
+-   Admin dapat melakukan mendaftarkan user, driver dan unit
 -   Admin dapat melakukan update user, driver dan unit
 -   Admin dapat menghapus user, driver dan unit
 -   Data approver kedua hanya menampilkan data yang sudah di approve oleh approver ke 2
