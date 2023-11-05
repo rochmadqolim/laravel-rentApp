@@ -33,7 +33,8 @@ composer install
 
 Renama file .env.example menjadi .env
 Set up .env seoerti berikut
-`sh
+
+```sh
     # Config to database
     DB_CONNECTION=mysql
     DB_HOST=127.0.0.1
@@ -41,7 +42,7 @@ Set up .env seoerti berikut
     DB_DATABASE=rent_drive
     DB_USERNAME=root
     DB_PASSWORD=
-    `
+```
 
 Buat database mysql dengan nama rent_drive
 
