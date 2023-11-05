@@ -32,7 +32,7 @@ composer install
 ```
 
 Renama file .env.example menjadi .env
-Set up .env seoerti berikut
+Set up .env seperti berikut
 
 ```sh
     # Config to database
