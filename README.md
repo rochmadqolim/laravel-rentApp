@@ -119,11 +119,11 @@ Tampilan halaman User Setting
 
 Tampilan Approval sebagai approver 1
 
-![alt text](https://github.com/rochmadqolim/laravel-rentApp/blob/main/public/img/approval1.jpgraw=true)
+![alt text](https://github.com/rochmadqolim/laravel-rentApp/blob/main/public/img/approval1.jpg?raw=true)
 
 Tampilan Approval sebagai approver 2
 
-![alt text](https://github.com/rochmadqolim/laravel-rentApp/blob/main/public/img/approval2.jpgraw=true)
+![alt text](https://github.com/rochmadqolim/laravel-rentApp/blob/main/public/img/approval2.jpg?raw=true)
 
 Untuk update aplikasi dapat melakukan pull atau clone pada repository:
 
