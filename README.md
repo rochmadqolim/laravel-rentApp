@@ -20,7 +20,7 @@ Aplikasi penyewaan kendaraan alat berat yang dibangun menggunakan framework lara
 
 -   Laravel 10
 -   PHP 8.1.9
--   MySql 5.1.0
+-   MySql 5.2.1
 
 ## Installation
 
