@@ -96,6 +96,10 @@ Tampilan Dashboard sebagai admin
 
 ![alt text](https://github.com/rochmadqolim/laravel-rentApp/blob/main/public/img/dashboard.jpg?raw=true)
 
+Tampilan halaman Rent dan Return
+
+![alt text](https://github.com/rochmadqolim/laravel-rentApp/blob/main/public/img/formRentandReturn.jpg?raw=true)
+
 Tampilan halaman Post untuk data driver dan unit
 
 -   Data Driver
@@ -105,10 +109,6 @@ Tampilan halaman Post untuk data driver dan unit
 -   Data Unit
 
 ![alt text](https://github.com/rochmadqolim/laravel-rentApp/blob/main/public/img/unit.jpg?raw=true)
-
-Tampilan halaman Rent dan Return
-
-![alt text](https://github.com/rochmadqolim/laravel-rentApp/blob/main/public/img/formRentandReturn.jpg?raw=true)
 
 Tampilan halaman Log dan export data dalam bentuk excel
 
