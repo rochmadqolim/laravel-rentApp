@@ -15,7 +15,7 @@ Aplikasi penyewaan kendaraan alat berat yang dibangun menggunakan framework lara
 -   Admin dapat melakukan mendaftarkan user, driver dan unit
 -   Admin dapat melakukan update user, driver dan unit
 -   Admin dapat menghapus user, driver dan unit
--   Data approver kedua hanya menampilkan data yang sudah di approve oleh approver ke 2
+-   Data approver kedua hanya menampilkan data yang sudah di approve oleh approver pertama
 
 ## Technology Stack
 
