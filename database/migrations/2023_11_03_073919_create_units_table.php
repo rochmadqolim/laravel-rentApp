@@ -15,10 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->unsignedBigInteger('brand_id');
-            $table->foreign('brand_id')->references('id')->on('brands');
+            $table->foreign('brand_id')->references('id')->on('brands')->cascadeOnDelete();
             $table->string('status')->default('Unit Available');
             $table->timestamps();
         });
+        
     }
 
     /**

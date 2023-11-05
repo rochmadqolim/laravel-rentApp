@@ -3,15 +3,16 @@
 @section('content')
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
-        <div class="content-header">
+        <section class="content-header">
             <div class="container-fluid">
-                <div class="row mb-2">
+                <div class="row mb-1">
                     <div class="col-sm-6">
-                        <h1 class="m-0">{{ $name }}</h1>
-                    </div><!-- /.col -->
-                </div><!-- /.row -->
-            </div><!-- /.container-fluid -->
-        </div>
+                        <h1 class="m-0">{{ $auth->name }}</h1>
+                        <h5 class="m-0" style="font-size: 17px">{{ $auth->role->name }}</h5>
+                    </div>
+                </div>
+            </div>
+        </section>
         <!-- /.content-header -->
 
         <!-- Main content -->
@@ -56,7 +57,7 @@
 
                             <div class="info-box-content">
                                 <span class="info-box-text">Total Driver</span>
-                                <span class="info-box-number">{{ $rents }}</span>
+                                <span class="info-box-number">{{ $drivers }}</span>
                             </div>
                             <!-- /.info-box-content -->
                         </div>

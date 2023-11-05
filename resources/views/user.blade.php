@@ -3,15 +3,16 @@
 @section('content')
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
-        <div class="content-header">
+        <section class="content-header">
             <div class="container-fluid">
-                <div class="row mb-2">
+                <div class="row mb-1">
                     <div class="col-sm-6">
-                        <h1 class="m-0">{{ $user->name }}</h1>
-                    </div><!-- /.col -->
-                </div><!-- /.row -->
-            </div><!-- /.container-fluid -->
-        </div>
+                        <h1 class="m-0">{{ $auth->name }}</h1>
+                        <h5 class="m-0" style="font-size: 17px">{{ $auth->role->name }}</h5>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <div class="content pb-2">
             <div class="container-fluid">
@@ -71,49 +72,53 @@
 
         <!-- Modal Detail-->
         @foreach ($users as $item)
-        <div class="modal fade" id="detailModal{{ $item->id }}" tabindex="-1" role="dialog" aria-labelledby="detailModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="detailModalLabel">Detail User</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+            <div class="modal fade" id="detailModal{{ $item->id }}" tabindex="-1" role="dialog"
+                aria-labelledby="detailModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="detailModalLabel">Detail User</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <form id="update-form-{{ $item->id }}" action="update/{{ $item->id }}" method="post">
+                            @csrf
+                            @method('PUT')
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="name">Full Name</label>
+                                    <input type="text" class="form-control" id="name" name="name"
+                                        value="{{ $item->name }}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" class="form-control" id="email" name="email"
+                                        value="{{ $item->email }}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="role">Select Role</label>
+                                    <select name="role_id" id="role" class="form-control select2"
+                                        style="width: 100%">
+                                        <option selected="selected">Choose Role</option>
+                                        @foreach ($roles as $role)
+                                            <option value="{{ $role->id }}"
+                                                @if ($role->id == $item->role_id) selected @endif>
+                                                {{ $role->name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Update</button>
+                            </div>
+                        </form>
                     </div>
-                    <form id="update-form-{{ $item->id }}" action="update/{{ $item->id }}" method="post">
-                        @csrf
-                        @method('PUT')
-                        <div class="modal-body">
-                            <div class="form-group">
-                                <label for="name">Full Name</label>
-                                <input type="text" class="form-control" id="name" name="name" value="{{ $item->name }}">
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Email</label>
-                                <input type="email" class="form-control" id="email" name="email" value="{{ $item->email }}">
-                            </div>
-                            <div class="form-group">
-                                <label for="role">Select Role</label>
-                                <select name="role_id" id="role" class="form-control select2" style="width: 100%">
-                                    <option selected="selected">Choose Role</option>
-                                    @foreach ($roles as $role)
-                                        <option value="{{ $role->id }}" @if ($role->id == $item->role_id) selected @endif>
-                                            {{ $role->name }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Update</button>
-                        </div>
-                    </form>
                 </div>
             </div>
-        </div>
-    @endforeach
+        @endforeach
         <!-- End Modal Detail-->
 
 
@@ -158,20 +163,19 @@
                                                 <td>{{ $item->email }}</td>
                                                 <td>{{ $item->role->name }}</td>
                                                 <td>
-                                                  
-                                                 
-                                                    <a href="#" data-toggle="modal" data-target="#detailModal{{ $item->id }}" class="btn btn-primary fs-5">
+                                                    <a href="#" data-toggle="modal"
+                                                        data-target="#detailModal{{ $item->id }}"
+                                                        class="btn btn-primary fs-5">
                                                         Update
                                                     </a>
-                                                    
-                                                    
                                                     @if ($item->id !== Auth::user()->id)
-                                                    <form action="user/{{ $item->id }}" method="POST" style="display: inline;">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" class="btn btn-danger btn-md delete-action">Delete</button>
-                                                    </form>
-                                                    
+                                                        <form action="user/{{ $item->id }}" method="POST"
+                                                            style="display: inline;">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit"
+                                                                class="btn btn-danger btn-md delete-action">Delete</button>
+                                                        </form>
                                                     @endif
                                                 </td>
                                             </tr>
@@ -195,11 +199,11 @@
 
 
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("DOMContentLoaded", function() {
         const deleteButtons = document.querySelectorAll(".delete-action");
 
         deleteButtons.forEach((button) => {
-            button.addEventListener("click", function (event) {
+            button.addEventListener("click", function(event) {
                 event.preventDefault();
 
                 Swal.fire({
@@ -225,4 +229,3 @@
         });
     });
 </script>
-

@@ -23,19 +23,19 @@ class DatabaseSeeder extends Seeder
     
         $userData = [
             [
-                'name' => 'this admin',
+                'name' => 'admin',
                 'email' => 'admin@mail.com',
                 'password' => Hash::make('123'),
                 'role_id' => 1,
             ],
             [
-                'name' => 'this approver 1',
+                'name' => 'approver',
                 'email' => 'approver1@mail.com',
                 'password' => Hash::make('123'),
                 'role_id' => 2,
             ],
             [
-                'name' => 'this approver 2',
+                'name' => 'approver',
                 'email' => 'approver2@mail.com',
                 'password' => Hash::make('123'),
                 'role_id' => 3,

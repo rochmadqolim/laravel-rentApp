@@ -25,4 +25,12 @@ class DriverController extends Controller
             $driver->delete();
             return redirect('driver');
     }
+
+    public function update(Request $request, $id){
+        
+        $driver = Driver::find($id);
+        $driver->update($request->all());
+    
+        return redirect('driver');
+    }
 }

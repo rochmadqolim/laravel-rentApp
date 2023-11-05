@@ -92,22 +92,13 @@
                  @if (auth()->user()->role_id != 1)
                      <li class="nav-item">
                          <a href="approval" class="nav-link {{ request()->is('approval') ? 'active' : '' }}">
-                             <i class="nav-icon fas fa-book"></i>
+                             <i class="nav-icon fas fa-calendar-check"></i>
                              <p>
                                  Approval
                              </p>
                          </a>
                      </li>
                  @endif
-
-                 <li class="nav-item">
-                     <a href="returnForm" class="nav-link {{ request()->is('returnForm') ? 'active' : '' }}">
-                         <i class="nav-icon fas fa-edit"></i>
-                         <p>
-                             Form Return
-                         </p>
-                     </a>
-                 </li>
              </ul>
 
          </nav>

@@ -24,13 +24,15 @@ class HomeController extends Controller
     public function dashboard()
     {
         $title = "Dashboard";
-        $name = Auth::user()->name;
+        $auth = Auth::user();
 
         $units = Unit::count();
         $unitUsed = Unit::where('status', 'Unit Not Available')->count();
         $unitReady = Unit::where('status', 'Unit Available')->count();
+
         $drivers = Driver::count();
         $driverReady = Driver::where('status', 'Available')->count();
+        
         $rents = Rent::count();
         $success = Rent::where('status', 'Returned')->count();
 
@@ -42,7 +44,7 @@ class HomeController extends Controller
             'drivers' => $drivers,
             'driverReady' => $driverReady,
             'rents' => $rents,
-            'name' => $name, 
+            'auth' => $auth, 
             'success' => $success, 
         ]);
     }
@@ -50,7 +52,7 @@ class HomeController extends Controller
     public function form(Request $request)
     {
         $title = "Form";
-        $name = Auth::user()->name;
+        $auth = Auth::user();
 
         $rents = new Rent();
         if ($request->get('search')) {
@@ -68,23 +70,14 @@ class HomeController extends Controller
              ->get();
 
         
-        return view('form',['title'=> $title, 'units'=> $units, 'drivers'=> $drivers, 'name' => $name, 'rents'=> $rents]);
+        return view('form',['title'=> $title, 'units'=> $units, 'drivers'=> $drivers, 'auth' => $auth, 'rents'=> $rents]);
     }
     
-    public function returnForm()
-    {
-        $title = "Return Form";
-        $name = Auth::user()->name;
-
-        $rents = Rent::all();
-        
-        return view('returnForm',['title'=> $title, 'rents'=> $rents, 'name' => $name]);
-    }
 
     public function user(Request $request)
     {
         $title = "User Setting";
-        $user = Auth::user();
+        $auth = Auth::user();
         $roles = Role::all();
 
     
@@ -95,13 +88,13 @@ class HomeController extends Controller
     
         $users = $users->get();
     
-        return view('user', ['title' => $title, 'users' => $users , 'user' => $user , 'roles' => $roles]);
+        return view('user', ['title' => $title, 'users' => $users , 'auth' => $auth , 'roles' => $roles]);
     }
     
     public function driver(Request $request)
     {
         $title = "Driver";
-        $name = Auth::user()->name;
+        $auth = Auth::user();
     
         $drivers = new Driver;
         if ($request->get('search')) {
@@ -110,7 +103,7 @@ class HomeController extends Controller
     
         $drivers = $drivers->orderBy('name', 'asc')->get();
     
-        return view('driver', ['name' => $name, 'title' => $title, 'drivers' => $drivers]);
+        return view('driver', ['auth' => $auth, 'title' => $title, 'drivers' => $drivers]);
     }
     
     
@@ -118,7 +111,7 @@ class HomeController extends Controller
     public function unit(Request $request)
     {
         $title = "Unit";
-        $name = Auth::user()->name;
+        $auth = Auth::user();
         $brands = Brand::all();
 
         $units = new Unit();
@@ -128,24 +121,25 @@ class HomeController extends Controller
     
         $units = $units->orderBy('name', 'asc')->get();
     
-        return view('unit', ['name' => $name, 'title' => $title, 'units' => $units, 'brands' => $brands]);
+        return view('unit', ['auth' => $auth, 'title' => $title, 'units' => $units, 'brands' => $brands]);
     }
 
     public function log()
     {
         $title = "Log";
-        $name = Auth::user()->name;
+        $auth = Auth::user();
 
         $rents = Rent::orderBy('updated_at', 'desc')->get();
 
     
-        return view('log', ['title' => $title, 'rents' => $rents, 'name' => $name]);
+        return view('log', ['title' => $title, 'rents' => $rents, 'auth' => $auth]);
     }
     
     public function approval(Request $request)
     {
         $title = "Approval";
-        $role = Auth::user();
+        $auth = Auth::user();
+
 
         $rents = new Rent();
         if ($request->get('search')) {
@@ -154,7 +148,7 @@ class HomeController extends Controller
     
         $rents = $rents->get();
         
-        return view('approval', ['title' => $title, 'rents' => $rents, 'role' => $role]);
+        return view('approval', ['title' => $title, 'rents' => $rents, 'auth' => $auth]);
         
     }
     

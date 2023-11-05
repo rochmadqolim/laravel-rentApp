@@ -36,17 +36,17 @@ class RentSeeder extends Seeder
                 ->inRandomOrder()
                 ->first()
                 ->id;
-    
-            // Pilih unit yang belum digunakan
-            $unitId = Unit::where('status', 'Unit Not Available')
+                
+                // Pilih unit yang belum digunakan
+                $unitId = Unit::where('status', 'Unit Not Available')
                 ->whereNotIn('id', $usedUnitIds)
                 ->inRandomOrder()
                 ->first()
                 ->id;
-    
-            // Tambahkan driver dan unit yang sudah digunakan ke daftar
-            $usedDriverIds[] = $driverId;
-            $usedUnitIds[] = $unitId;
+                
+                // Tambahkan driver dan unit yang sudah digunakan ke daftar
+                $usedUnitIds[] = $unitId;
+                $usedDriverIds[] = $driverId;
     
             $rentalData = [
                 'rent_date' => $faker->dateTimeBetween($startDate, $endDate)->format('Y-m-d'),
@@ -58,6 +58,5 @@ class RentSeeder extends Seeder
             DB::table('rents')->insert($rentalData);
         }
     }
-    
-    
+      
 }

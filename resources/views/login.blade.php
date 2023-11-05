@@ -22,7 +22,7 @@
         <!-- /.login-logo -->
         <div class="card card-outline card-secondary">
             <div class="card-header text-center">
-                <a href="../../index2.html" class="h1"><b>Admin</b>LTE</a>
+                <a href="../../index2.html" class="h1"><b>Rent</b>DRIVE</a>
             </div>
             <div class="card-body">
 

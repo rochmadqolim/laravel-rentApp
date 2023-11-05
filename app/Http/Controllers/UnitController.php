@@ -27,4 +27,16 @@ class UnitController extends Controller
             return redirect('unit');
     }
 
+    public function update(Request $request, $id) {
+        $unit = Unit::find($id);
+    
+        $unit->update([
+            'name' => $request->input('name'),
+            'brand_id' => $request->input('brand')
+        ]);
+    
+        return redirect('unit');
+    }
+    
+
 }

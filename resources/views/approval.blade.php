@@ -5,13 +5,13 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <div class="container-fluid">
-                <div class="row mb-2">
+                <div class="row mb-1">
                     <div class="col-sm-6">
-                        <h1 class="m-0">{{ $role->name }}</h1>
-
+                        <h1 class="m-0">{{ $auth->name }}</h1>
+                        <h5 class="m-0" style="font-size: 17px">{{ $auth->role->name }}</h5>
                     </div>
                 </div>
-            </div><!-- /.container-fluid -->
+            </div>
         </section>
 
         <!-- Main content -->
