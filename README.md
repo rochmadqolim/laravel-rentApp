@@ -5,12 +5,16 @@ Aplikasi penyewaan kendaraan alat berat yang dibangun menggunakan framework lara
 ## Fitur aplikasi
 
 -   Terdapat 3 user (admin, approver1, approver2)
--   Admin dapat menginputkan pemesanan kendaraan dan menentukan driver serta
-    pihak yang menyetujui pemesanan
 -   Persetujuan dilakukan berjenjang dengan 2 level approver
 -   Pihak yang menyetujui dapat melakukan persetujuan melalui aplikasi
 -   Terdapat dashboard yang menampilkan grafik pemakaian kendaraan
 -   Terdapat laporan periodik pemesanan kendaraan yang dapat di export (Excel)
+-   Admin dapat menginputkan kendaraan dan menentukan driver untuk dipesan
+-   Admin dapat mengkonfirmasi penyembalian kendaraan
+-   Admin dapat melakukan mendaftarakan user, driver dan unit
+-   Admin dapat melakukan update user, driver dan unit
+-   Admin dapat menghapus user, driver dan unit
+-   Data approver kedua hanya menampilkan data yang sudah di approve oleh approver ke 2
 
 ## Technology Stack
 
@@ -45,9 +49,11 @@ Setelah database dibuat, jalankan perintah berikut pada terminal
 
 ```sh
 php artisan migrate
+php artisan db:seed --class=RoleSeeder
 php artisan db:seed
-php artisan db:seed --class=UnitSeeder
+php artisan db:seed --class=BrandSeeder
 php artisan db:seed --class=DriverSeeder
+php artisan db:seed --class=UnitSeeder
 php artisan db:seed --class=RentSeeder
 php artisan key:generate
 ```
@@ -83,15 +89,41 @@ Login sebagai Approver 1
 
 Tampilan halaman login
 
-![alt text](https://github.com/rochmadqolim/laravel-rentApp/blob/main/public/login.jpg?raw=true)
+![alt text](https://github.com/rochmadqolim/laravel-rentApp/blob/main/public/img/login.jpg?raw=true)
 
-Tampilan halaman dashboard
+Tampilan Dashboard sebagai admin
 
-![alt text](https://github.com/rochmadqolim/laravel-rentApp/blob/main/public/dashboard.jpg?raw=true)
+![alt text](https://github.com/rochmadqolim/laravel-rentApp/blob/main/public/img/dashboard.jpg?raw=true)
 
-Tampilan untuk mengexport dan mendownload data excel
+Tampilan halaman Post untuk data driver dan unit
 
-![alt text](https://github.com/rochmadqolim/laravel-rentApp/blob/main/public/logs.jpg?raw=true)
+-   Data Driver
+
+![alt text](https://github.com/rochmadqolim/laravel-rentApp/blob/main/public/img/driver.jpg?raw=true)
+
+-   Data Unit
+
+![alt text](https://github.com/rochmadqolim/laravel-rentApp/blob/main/public/img/unit.jpg?raw=true)
+
+Tampilan halaman Rent dan Return
+
+![alt text](https://github.com/rochmadqolim/laravel-rentApp/blob/main/public/img/formRentandReturn.jpg?raw=true)
+
+Tampilan halaman Log dan export data dalam bentuk excel
+
+![alt text](https://github.com/rochmadqolim/laravel-rentApp/blob/main/public/img/log.jpg?raw=true)
+
+Tampilan halaman User Setting
+
+![alt text](https://github.com/rochmadqolim/laravel-rentApp/blob/main/public/img/user%20setting.jpg?raw=true)
+
+Tampilan Approval sebagai approver 1
+
+![alt text](https://github.com/rochmadqolim/laravel-rentApp/blob/main/public/img/approval1.jpgraw=true)
+
+Tampilan Approval sebagai approver 2
+
+![alt text](https://github.com/rochmadqolim/laravel-rentApp/blob/main/public/img/approval2.jpgraw=true)
 
 Untuk update aplikasi dapat melakukan pull atau clone pada repository:
 

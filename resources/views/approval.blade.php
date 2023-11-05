@@ -68,7 +68,7 @@
                                                         <td>{{ $item->driver->name }}</td>
                                                         <td>{{ $item->status }}</td>
                                                         <td>
-                                                            <input type="submit" class="btn btn-primary" value="Submit">
+                                                            <input type="submit" class="btn btn-primary" value="First Approve">
                                                         </td>
                                                     </form>
                                                 </tr>
@@ -90,7 +90,7 @@
                                                         <td>{{ $item->driver->name }}</td>
                                                         <td>{{ $item->status }}</td>
                                                         <td>
-                                                            <input type="submit" class="btn btn-primary" value="Submit">
+                                                            <input type="submit" class="btn btn-primary" value="Second Approve">
                                                         </td>
                                                     </form>
                                                 </tr>
