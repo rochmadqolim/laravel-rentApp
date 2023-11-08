@@ -154,6 +154,6 @@ class HomeController extends Controller
     
 
     public function export(){
-        return Excel::download(new RentExport, 'rent-list-'.Carbon::now()->toDateTimeLocalString().'.xlsx');
+        return Excel::download(new RentExport, 'file-'.Carbon::now()->toDateTimeString().'.xlsx');
     }
 }

@@ -50,7 +50,8 @@
                                                 style="width: 100%">
                                                 <option selected="selected">Choose Driver</option>
                                                 @foreach ($drivers as $item)
-                                                    <option value="{{ $item->id }}">
+                                                    <option value="{{ $item->id }}"
+                                                        @if ($item->status === 'Not Available') disabled @endif>
                                                         {{ $item->name }}
                                                     </option>
                                                 @endforeach
